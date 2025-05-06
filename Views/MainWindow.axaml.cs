@@ -17,4 +17,14 @@ public partial class MainWindow : Window
         var animation = (Animation)this.Resources["EmojiMagic"];
         animation?.RunAsync(Emoji);
     }
+
+    private double ScreenWidth()
+    {
+        var screen = this.Screens.ScreenFromVisual(this);
+        if (screen is not null)
+        {
+            return screen.WorkingArea.Width;
+        }
+        return 30.0;
+    }
 }
