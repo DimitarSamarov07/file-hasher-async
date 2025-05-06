@@ -9,12 +9,90 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="file_hasher_async">
 
+
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+        <TextBlock Classes="fade enlarge" Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Classes="fade red-magic" Text="{Binding WorkInProgress}" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" />
+        <Button Classes="jiggle-btn" Width="400" Height="100" HorizontalAlignment="Center" Click="ClickHandler">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">I'm THE button</TextBlock>
+        </Button>
+        <TextBlock FontSize="18" HorizontalAlignment="Center" Margin="0 10" x:Name="Message">Boooouuutton</TextBlock>
+        <TextBlock HorizontalAlignment="Center" x:Name="Emoji" Classes="emoji-appear" Opacity="0">👍😎</TextBlock>
+    </StackPanel>
 
+
+    <Window.Resources>
+        <Animation x:Key="EmojiMagic"
+                   x:SetterTargetType="TextBlock"
+                   Duration="0:0:3"
+                   IterationCount="1"
+                   PlaybackDirection="Alternate" FillMode="Forward"> 
+            <KeyFrame Cue="0%">
+                <Setter Property="Opacity" Value="0.0"/>
+                <Setter Property="FontSize" Value="1"/>
+            </KeyFrame>
+            <KeyFrame Cue="100%">
+                <Setter Property="Opacity" Value="1.0"/>
+                <Setter Property="FontSize" Value="90"/>
+            </KeyFrame>
+        </Animation>
+    </Window.Resources>
+    <Window.Styles>
+        <Style Selector="TextBlock.fade">
+            <Style.Animations>
+                <Animation Duration="0:0:5" IterationCount="INFINITE" PlaybackDirection="Alternate">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0.4" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1.0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="TextBlock.enlarge">
+            <Style.Animations>
+                <Animation Duration="0:0:2" Easing="ElasticEaseOut" IterationCount="INFINITE" PlaybackDirection="Alternate">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="FontSize" Value="10.0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="FontSize" Value="30.0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="TextBlock.red-magic">
+            <Setter Property="Foreground" Value="Red" />
+            <Style.Animations>
+                <Animation Duration="0:0:2" IterationCount="INFINITE" PlaybackDirection="Alternate">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="FontSize" Value="18.0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="FontSize" Value="50.0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="Button.jiggle-btn">
+            <Style.Animations>
+                <Animation Duration="0:0:2" IterationCount="INFINITE" PlaybackDirection="Alternate">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="FontSize" Value="18.0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="FontSize" Value="50.0" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </Window.Styles>
 </Window>
