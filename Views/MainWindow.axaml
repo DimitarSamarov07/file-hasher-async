@@ -24,7 +24,7 @@
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">I'm THE button</TextBlock>
         </Button>
         <TextBlock FontSize="18" HorizontalAlignment="Center" Margin="0 10" x:Name="Message">Boooouuutton</TextBlock>
-        <TextBlock HorizontalAlignment="Center" x:Name="Emoji" Classes="emoji-appear" Opacity="0">👍😎</TextBlock>
+        <TextBlock HorizontalAlignment="Center" x:Name="Emoji" Opacity="0">👍😎</TextBlock>
     </StackPanel>
     
     
