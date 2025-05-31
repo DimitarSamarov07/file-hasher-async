@@ -11,12 +11,12 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void ClickHandler(object? sender, RoutedEventArgs e)
-    {
-        Message.Text = "Hashing....(some day)";
-        var animation = (Animation)this.Resources["EmojiMagic"];
-        animation?.RunAsync(Emoji);
-    }
+    // private void ClickHandler(object? sender, RoutedEventArgs e)
+    // {
+    //     Message.Text = "Hashing....(some day)";
+    //     var animation = (Animation)this.Resources["EmojiMagic"];
+    //     animation?.RunAsync(Emoji);
+    // }
 
     private double ScreenWidth()
     {

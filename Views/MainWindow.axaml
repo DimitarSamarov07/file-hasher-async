@@ -8,7 +8,6 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="file_hasher_async">
-        
 
 
     <Design.DataContext>
@@ -17,31 +16,42 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock Classes="fade enlarge" Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <TextBlock Classes="fade red-magic" Text="{Binding WorkInProgress}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-        <Button Classes="jiggle-btn" Width="400" Height="100" HorizontalAlignment="Center" Click="ClickHandler">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center">I'm THE button</TextBlock>
-        </Button>
-        <TextBlock FontSize="18" HorizontalAlignment="Center" Margin="0 10" x:Name="Message">Boooouuutton</TextBlock>
-        <TextBlock HorizontalAlignment="Center" x:Name="Emoji" Opacity="0">👍😎</TextBlock>
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Center">
+        <StackPanel MinHeight="140" MinWidth="600" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Classes="fade enlarge" Text="{Binding Greeting}" HorizontalAlignment="Center"
+                       VerticalAlignment="Center" />
+        </StackPanel>
+
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Command="{Binding OpenFile}"
+                    CommandParameter="{x:Static vm:FileOrder.First}"
+                    Content="{Binding firstFileName.Name}">
+            </Button>
+
+
+            <Button Command="{Binding OpenFile}"
+                    CommandParameter="{x:Static vm:FileOrder.Second}"
+                    Content="{Binding secondFileName.Name}">
+            </Button>
+        </StackPanel>
     </StackPanel>
-    
-    
+
+
     <Window.Resources>
         <Animation x:Key="EmojiMagic"
                    x:SetterTargetType="TextBlock"
                    Duration="0:0:3"
                    IterationCount="1"
-                   PlaybackDirection="Alternate" 
-                   FillMode="Forward"> 
+                   PlaybackDirection="Alternate"
+                   FillMode="Forward">
             <KeyFrame Cue="0%">
-                <Setter Property="Opacity" Value="0.0"/>
-                <Setter Property="FontSize" Value="1"/>
+                <Setter Property="Opacity" Value="0.0" />
+                <Setter Property="FontSize" Value="1" />
             </KeyFrame>
             <KeyFrame Cue="100%">
-                <Setter Property="Opacity" Value="1.0"/>
-                <Setter Property="FontSize" Value="120"/>
+                <Setter Property="Opacity" Value="1.0" />
+                <Setter Property="FontSize" Value="120" />
             </KeyFrame>
         </Animation>
     </Window.Resources>
@@ -60,7 +70,8 @@
         </Style>
         <Style Selector="TextBlock.enlarge">
             <Style.Animations>
-                <Animation Duration="0:0:2" Easing="ElasticEaseOut" IterationCount="INFINITE" PlaybackDirection="Alternate">
+                <Animation Duration="0:0:2" Easing="ElasticEaseOut" IterationCount="INFINITE"
+                           PlaybackDirection="Alternate">
                     <KeyFrame Cue="0%">
                         <Setter Property="FontSize" Value="10.0" />
                     </KeyFrame>
