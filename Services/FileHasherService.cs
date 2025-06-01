@@ -7,9 +7,9 @@ namespace file_hasher_async.HasherController;
 
 public static class FileHasherService
 {
-    private static SHA256 _sha256Hash = SHA256.Create();
     public static async Task<string> GetHash(Stream input)
     {
+        SHA256 _sha256Hash = SHA256.Create();
         // Convert the input to a byte array and compute the hash.
         byte[] data = await _sha256Hash.ComputeHashAsync(input);
 
