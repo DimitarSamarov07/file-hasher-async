@@ -1,19 +1,17 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace file_hasher_async.HasherController;
 
-public class FileHasherService(Stream fileStream)
+public static class FileHasherService
 {
-    public string Hash  = GetHash(fileStream);
-    
-    
     private static SHA256 _sha256Hash = SHA256.Create();
-    private static string GetHash(Stream input)
+    public static async Task<string> GetHash(Stream input)
     {
         // Convert the input to a byte array and compute the hash.
-        byte[] data = _sha256Hash.ComputeHash(input);
+        byte[] data = await _sha256Hash.ComputeHashAsync(input);
 
         // Create a new Stringbuilder to collect the bytes
         // and create a string.
