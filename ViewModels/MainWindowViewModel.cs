@@ -9,6 +9,7 @@ using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using file_hasher_async.HasherController;
 using file_hasher_async.Models;
 
 namespace file_hasher_async.ViewModels;
@@ -23,6 +24,9 @@ public partial class MainWindowViewModel : ViewModelBase
     public ObservableFileName firstFileName { get; set; }
     public ObservableFileName secondFileName { get; set; }
 
+    public ObservableString firstHash { get; set; }
+    public ObservableString secondHash { get; set; }
+
     private IStorageFile firstFile;
     private IStorageFile secondFile;
 
@@ -31,6 +35,9 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         firstFileName = new ObservableFileName("Select the first file");
         secondFileName = new ObservableFileName("Select the second file");
+
+        firstHash = new ObservableString();
+        secondHash = new ObservableString();
     }
 
     public async Task OpenFile(FileOrder order)
@@ -51,7 +58,32 @@ public partial class MainWindowViewModel : ViewModelBase
         }
     }
 
-    private async Task<IStorageFile?> OpenFilePickerAsync()
+    public async Task OnHashClick(FileOrder fileOrder)
+    {
+        IStorageFile fileTarget;
+        ObservableString hashTarget;
+
+        switch (fileOrder)
+        {
+            case FileOrder.First:
+                fileTarget = firstFile;
+                hashTarget = firstHash;
+                hashTarget.StringValue = "Hashing in progress...";
+                break;
+            case FileOrder.Second:
+                fileTarget = secondFile;
+                hashTarget = secondHash;
+                hashTarget.StringValue = "Hashing in progress...";
+                break;
+            default:
+                return;
+        }
+
+        var fileHash = await FileHasherService.GetHash(await fileTarget.OpenReadAsync());
+        hashTarget.StringValue = fileHash;
+    }
+
+private async Task<IStorageFile?> OpenFilePickerAsync()
     {
         // Magic definition of the storage provider
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||

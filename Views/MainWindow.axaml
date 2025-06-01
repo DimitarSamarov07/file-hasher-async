@@ -24,16 +24,47 @@
 
 
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Command="{Binding OpenFile}"
-                    CommandParameter="{x:Static vm:FileOrder.First}"
-                    Content="{Binding firstFileName.Name}">
-            </Button>
+            <DockPanel VerticalAlignment="Top">
+                <Button Command="{Binding OpenFile}"
+                        CommandParameter="{x:Static vm:FileOrder.First}"
+                        Content="{Binding firstFileName.Name}"
+                        Margin="0,0,30,20">
+                </Button>
+
+                <Button Command="{Binding OnHashClick}"
+                        CommandParameter="{x:Static vm:FileOrder.First}"
+                        IsVisible="{Binding firstFileName.HasDefaultChanged}"
+                        Margin="0,0,0,20"
+                        Padding="15">
+                    HASH MEEEE
+                </Button>
+                <TextBlock TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding firstHash.StringValue}"
+                           Margin="30, 0,0 ,0"
+                           />
+            </DockPanel>
 
 
-            <Button Command="{Binding OpenFile}"
-                    CommandParameter="{x:Static vm:FileOrder.Second}"
-                    Content="{Binding secondFileName.Name}">
-            </Button>
+            <DockPanel VerticalAlignment="Top">
+                <Button Command="{Binding OpenFile}"
+                        CommandParameter="{x:Static vm:FileOrder.Second}"
+                        Content="{Binding secondFileName.Name}"
+                        Margin="0,0,30,20">
+                </Button>
+                <Button Command="{Binding OnHashClick }"
+                        CommandParameter="{x:Static vm:FileOrder.Second}"
+                        IsVisible="{Binding secondFileName.HasDefaultChanged}"
+                        Margin="0,0,0,20"
+                        Padding="15">
+                    HASH MEEEE
+                </Button>
+                <TextBlock TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding secondHash.StringValue}"
+                           Margin="30, 0,0 ,0"
+                />
+            </DockPanel>
         </StackPanel>
     </StackPanel>
 

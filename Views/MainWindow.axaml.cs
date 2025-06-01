@@ -1,3 +1,4 @@
+using System;
 using Avalonia.Animation;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -27,4 +28,5 @@ public partial class MainWindow : Window
         }
         return 30.0;
     }
+
 }
