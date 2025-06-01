@@ -18,9 +18,6 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     public string Greeting { get; } = "Welcome to file-hasher-async!";
 
-    public string WorkInProgress { get; } =
-        "Please stand back while we are working on doing something. Come back next week :)";
-
     public ObservableFileName firstFileName { get; set; }
     public ObservableFileName secondFileName { get; set; }
 

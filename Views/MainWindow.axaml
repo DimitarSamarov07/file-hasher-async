@@ -16,7 +16,17 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Center">
+
+    <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <DockPanel HorizontalAlignment="Left" Margin="10">
+            <ToggleSwitch OnContent="Dark" IsChecked="True"
+                          ToolTip.Tip="Switch between light and dark theme"
+                          OffContent="Light" Click="Switch_Toggler">
+            </ToggleSwitch>
+            <TextBlock VerticalAlignment="Center" Foreground="#ff333333" Margin="30,0,0,0">
+                MY EYES ARE BURNINGGGGG
+            </TextBlock>
+        </DockPanel>
         <StackPanel MinHeight="140" MinWidth="600" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Classes="fade enlarge" Text="{Binding Greeting}" HorizontalAlignment="Center"
                        VerticalAlignment="Center" />
@@ -41,8 +51,7 @@
                 <TextBlock TextAlignment="Center"
                            VerticalAlignment="Center"
                            Text="{Binding firstHash.StringValue}"
-                           Margin="30, 0,0 ,0"
-                           />
+                           Margin="30, 0,0 ,0" />
             </DockPanel>
 
 
@@ -62,8 +71,7 @@
                 <TextBlock TextAlignment="Center"
                            VerticalAlignment="Center"
                            Text="{Binding secondHash.StringValue}"
-                           Margin="30, 0,0 ,0"
-                />
+                           Margin="30, 0,0 ,0" />
             </DockPanel>
         </StackPanel>
     </StackPanel>
@@ -108,31 +116,6 @@
                     </KeyFrame>
                     <KeyFrame Cue="100%">
                         <Setter Property="FontSize" Value="30.0" />
-                    </KeyFrame>
-                </Animation>
-            </Style.Animations>
-        </Style>
-        <Style Selector="TextBlock.red-magic">
-            <Setter Property="Foreground" Value="Red" />
-            <Style.Animations>
-                <Animation Duration="0:0:2" IterationCount="INFINITE" PlaybackDirection="Alternate">
-                    <KeyFrame Cue="0%">
-                        <Setter Property="FontSize" Value="18.0" />
-                    </KeyFrame>
-                    <KeyFrame Cue="100%">
-                        <Setter Property="FontSize" Value="50" />
-                    </KeyFrame>
-                </Animation>
-            </Style.Animations>
-        </Style>
-        <Style Selector="Button.jiggle-btn">
-            <Style.Animations>
-                <Animation Duration="0:0:2" IterationCount="INFINITE" PlaybackDirection="Alternate">
-                    <KeyFrame Cue="0%">
-                        <Setter Property="FontSize" Value="18.0" />
-                    </KeyFrame>
-                    <KeyFrame Cue="100%">
-                        <Setter Property="FontSize" Value="50.0" />
                     </KeyFrame>
                 </Animation>
             </Style.Animations>
